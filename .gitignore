@@ -6,4 +6,18 @@ envs/*/.venv/
 .cache/
 data/
 outputs/
+# Downloaded checkpoints stay local; the existing tracked DINOv2 file is unaffected.
+model_weights/**/*.pth
+model_weights/**/*.pt
+model_weights/**/*.ckpt
+model_weights/**/*.safetensors
+model_weights/**/*.tar
+model_weights/map_anything/config.json
+model_weights/map_anything/README.md
+model_weights/map_anything/.gitattributes
+model_weights/dinov3/vitb16-hf/config.json
+model_weights/dinov3/vitb16-hf/README.md
+model_weights/dinov3/vitb16-hf/LICENSE.md
+model_weights/dinov3/vitb16-hf/preprocessor_config.json
+model_weights/dinov3/vitb16-hf/.gitattributes
 model_weights/sam3/
