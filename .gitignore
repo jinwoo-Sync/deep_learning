@@ -6,3 +6,4 @@ envs/*/.venv/
 .cache/
 data/
 outputs/
+model_weights/sam3/

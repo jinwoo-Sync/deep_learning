@@ -1,0 +1,21 @@
+[project]
+name = "sam3-ubuntu-env"
+version = "0.1.0"
+description = "Meta SAM3 in an isolated Ubuntu CUDA uv environment"
+requires-python = "==3.12.*"
+dependencies = [
+    "torch==2.10.0",
+    "torchvision",
+    "sam3",
+    "pillow",
+]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }
+sam3 = { path = "../../sam3", editable = true }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true

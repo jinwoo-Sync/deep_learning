@@ -51,3 +51,16 @@ ELSED는 [공식 저장소](https://github.com/iago-suarez/ELSED)의 Apache-2.0 
 ## 우선 다운로드 명령
 
 Depth Anything V2 **Small**, MINIMA **LoFTR/XoFTR**의 사용자 실행 명령과 정확한 저장 경로는 [`model_weights/README.md`](model_weights/README.md#지금-먼저-받을-3개-모델)에 있다. 실행 경로에 필요한 MINIMA 하위 소스 두 개는 초기화했다. 가중치는 아직 받지 않았다.
+
+## SAM3 설치 결과와 필수 환경 격리 (2026-09-26)
+
+**모든 모델 submodule은 소스 저장용이다. 모델 추론은 반드시 모델별 독립 `uv` 프로젝트의 `.venv`에서 실행한다.** 전역 Python, 전역 `pip`, 다른 모델의 `.venv`를 사용하지 않는다. `uv sync --project envs/<모델>`로 설치하고 `uv run --project envs/<모델> ...`로 실행한다. SAM3는 Mac MLX용 `envs/sam3_macos/.venv`와 Ubuntu CUDA용 `envs/sam3_ubuntu/.venv`를 분리한다. Ubuntu 컨테이너 안에서도 `uv`를 사용한다.
+
+| 단계 | 실제 확인 결과 |
+|---|---|
+| 공식 소스 | Meta `facebookresearch/sam3`를 별도 `sam3/` Git submodule로 checkout했다. 소스 확보만 확인했다. |
+| 공식 가중치 | Hugging Face 계정 `jinwoo31`은 `facebook/sam3`와 `facebook/sam3.1` 접근 승인이 없다. 각각 `config.json` 다운로드가 `Access denied. This repository requires approval.`로 실패했다. `.pt` 체크포인트는 받지 못했다. |
+| Mac 환경 | `uv sync --project envs/sam3_macos --python 3.13`이 성공해 Python 3.13.15, `sam3-mlx==0.1.1`, MLX 0.32.2를 독립 `.venv`에 설치했다. sandbox 안에서 `import mlx.core`는 `No Metal device available`로 실패했다. sandbox 밖 검증 요청은 중단돼 실제 Mac GPU 추론은 미확인이다. |
+| Ubuntu 환경 | 호스트 주소가 없어 Ubuntu 설치, Docker 빌드, CUDA 장치 확인, 공식 SAM3 추론은 하지 않았다. `envs/sam3_ubuntu`에는 독립 `uv` 환경 정의만 준비했다. |
+
+가중치 접근 승인, 소스 checkout, 패키지 설치, 실제 mask 출력은 별도 상태다. 승인 토큰과 가중치는 Git에 올리지 않는다. 공식 SAM3는 CUDA 실행 경로이며 Mac은 별도 MLX 포트를 사용한다. [공식 설치](https://github.com/facebookresearch/sam3#installation), [공식 가중치](https://huggingface.co/facebook/sam3), [Mac 포트](https://pypi.org/project/sam3-mlx/).
