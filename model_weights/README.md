@@ -6,7 +6,7 @@
 
 ```bash
 # TensorGraphX 저장소 루트에서 실행:
-git submodule update --init 3rd/deep_learning 3rd/ELSED
+git submodule update --init --recursive 3rd/deep_learning 3rd/ELSED
 cd 3rd/deep_learning
 # deep_learning 저장소만 별도 clone했다면 clone한 저장소 루트로 cd한다.
 # uv가 없다면 먼저 https://docs.astral.sh/uv/getting-started/installation/ 에서 설치

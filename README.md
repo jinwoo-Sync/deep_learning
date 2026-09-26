@@ -7,13 +7,13 @@ TensorGraphX의 LiDAR–camera 보정에 사용할 모델 소스와 가중치 �
 | 역할 | 모델 | 소스 | 가중치 |
 |---|---|---|---|
 | 점 검출 | DaD, DeDoDe v2 | `dad/`, `dedode/` | `model_weights/dad/dad.pth`, `model_weights/dedode/dedode_detector_L_v2.pth` |
-| 기술자 | DINOv3 ViT-B/16, DINOv2 ViT-S/14 | `dinov3/`, `dinov2/` | `model_weights/dinov3/vitb16-hf/`, `model_weights/dinov2_vits14_pretrain.pth` |
+| 기술자 | DINOv3 ViT-B/16 (기본); DINOv2 ViT-S/14 (비교 보관) | `dinov3/`, `dinov2/` | `model_weights/dinov3/vitb16-hf/`, `model_weights/dinov2_vits14_pretrain.pth` |
 | 교차 모달 매칭 | MINIMA LoFTR/XoFTR, XoFTR | `minima/`, `xoftr/` | `model_weights/minima/`, `model_weights/xoftr/` |
 | 선 검출 | LINEA | `linea/` | `model_weights/linea/linea_hgnetv2_l.pth` |
 | 깊이·3D | Depth Anything V2 Small, MapAnything Apache | `depth_anything_v2/`, `map_anything/` | `model_weights/depth_anything_v2/`, `model_weights/map_anything/` |
-| 분할 | SAM 2.1 Hiera Small | `sam2/` | `model_weights/sam2/sam2.1_hiera_small.pt` |
+| 분할 | SAM3 (기본); SAM 2.1 Hiera Small (소스·가중치 보관) | `sam3/`, `sam2/` | `model_weights/sam3/official/` 및 Mac 변환본 `model_weights/sam3/mlx/`; `model_weights/sam2/sam2.1_hiera_small.pt` |
 
-ELSED는 **TensorGraphX의 `3rd/ELSED`** 에 있다. CPU C++ 소스이며 학습 가중치가 없다. DeepLSD와 DiffusionEdge는 Mac 실행 보류로 이 선택 목록에서 제외했다. LightGlue와 OmniGlue도 사용하지 않는다. 현재 TensorGraphX의 점 매처는 상호 최근접 매칭이며, DaD+DINOv3 집중 실행은 별도 파이프라인에서 확인했다.
+ELSED는 **TensorGraphX의 `3rd/ELSED`** 에 있다. CPU C++ 소스이며 학습 가중치가 없다. DeepLSD와 DiffusionEdge는 Mac 실행 보류로 이 선택 목록에서 제외했다. LightGlue와 OmniGlue도 사용하지 않는다. 현재 TensorGraphX의 기본 점 매처는 DaD+DINOv3 상호 최근접이며, 기본 분할기는 SAM3다. SAM3는 정적 표면 마스크로 점 대응을 필터한다. DaD/DeDoDe+DINOv3 작은 CPU 추론과 SAM3 Mac GPU 이미지 추론을 각각 확인했다. SAM2는 실행 경로에 연결하지 않는다.
 
 ## 다른 Mac·Ubuntu에서 시작
 
@@ -21,7 +21,7 @@ ELSED는 **TensorGraphX의 `3rd/ELSED`** 에 있다. CPU C++ 소스이며 학습
 # 새 머신: TensorGraphX 기본 브랜치를 받는다.
 git clone https://github.com/jinwoo-Sync/TensorGraphX.git
 cd TensorGraphX
-git submodule update --init 3rd/deep_learning 3rd/ELSED
+git submodule update --init --recursive 3rd/deep_learning 3rd/ELSED
 git -C 3rd/deep_learning submodule update --init --recursive
 cd 3rd/deep_learning
 

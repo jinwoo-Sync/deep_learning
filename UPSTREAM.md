@@ -14,7 +14,7 @@
 | Depth Anything V2 Small | https://github.com/DepthAnything/Depth-Anything-V2 | `a561b849ebae10a6f5ef49e26c83cbbcd36c71bf` | `depth_anything_v2/` |
 | MapAnything | https://github.com/facebookresearch/map-anything | `3d10cf7a3016fc0f9bb13a071ee66c47b10be0d9` | `map_anything/`; Apache checkpoint |
 | SAM 2.1 | https://github.com/facebookresearch/sam2 | `2b90b9f5ceec907a1c18123530e92e794ad901a4` | `sam2/`; Hiera Small checkpoint |
-| SAM3 (optional; access pending) | https://github.com/facebookresearch/sam3 | `2345a4ad109ac29c569da749c91d84f10dc08c40` | `sam3/`; isolated Mac/Ubuntu definitions; weights unavailable |
+| SAM3 (TensorGraphX 기본 분할기) | https://github.com/facebookresearch/sam3 | `2345a4ad109ac29c569da749c91d84f10dc08c40` | `sam3/`; 공식 `sam3.pt` 승인·로컬 다운로드, Mac MLX 추론 확인; Mac/Ubuntu 독립 uv 환경 |
 | ELSED | https://github.com/iago-suarez/ELSED | `1878213b2f5f06a9261d8b1838f53d48e5fd128d` | TensorGraphX `3rd/ELSED/`; no weights |
 
 DeepLSD와 DiffusionEdge는 Mac 실행 보류. LightGlue와 OmniGlue는 현재 사용하지 않는다. TensorGraphX의 현행 점 매칭은 상호 최근접 방식이다. Python 환경을 강제로 설치하지 않는다.
