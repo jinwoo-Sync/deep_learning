@@ -1,14 +1,14 @@
 # 모델 가중치 다운로드와 경로
 
-이 문서는 **다른 Mac 또는 Ubuntu에서 같은 체크포인트를 다시 받기 위한 실행 계약**이다. 저장소 루트에서 실행한다. 소스는 `git submodule update --init --recursive`로 받는다. 가중치 다운로드는 기존 venv를 변경하지 않는다.
+이 문서는 **다른 Mac 또는 Ubuntu에서 같은 체크포인트를 다시 받기 위한 실행 계약**이다. 아래의 설치 절차는 TensorGraphX 저장소 루트에서 시작하며, 가중치 명령은 `3rd/deep_learning` 루트에서 실행한다. TensorGraphX는 `codex/elsed-third-party`, deep_learning은 `codex/model-weights` 브랜치의 커밋을 사용한다. 소스는 `git submodule update --init --recursive`로 받는다. 가중치 다운로드는 기존 venv를 변경하지 않는다.
 
 ## 한 번에 받기
 
 ```bash
-# TensorGraphX는 codex/elsed-third-party 브랜치를 체크아웃한다.
-# deep_learning만 별도 받을 때는:
-# git clone --branch codex/model-weights https://github.com/jinwoo-Sync/deep_learning.git
+# TensorGraphX 저장소 루트에서 실행:
+git submodule update --init 3rd/deep_learning 3rd/ELSED
 cd 3rd/deep_learning
+# deep_learning 저장소만 별도 clone했다면 clone한 저장소 루트로 cd한다.
 # uv가 없다면 먼저 https://docs.astral.sh/uv/getting-started/installation/ 에서 설치
 # DINOv3 접근 조건에 동의한 HF 계정만 로그인 필요:
 uvx --from huggingface_hub hf auth login
