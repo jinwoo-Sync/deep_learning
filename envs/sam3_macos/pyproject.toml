@@ -7,4 +7,5 @@ dependencies = [
     "sam3-mlx==0.1.1",
     "pillow",
     "huggingface-hub",
+    "torch>=2.14.0",
 ]

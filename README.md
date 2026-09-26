@@ -45,11 +45,11 @@ bash scripts/check_weights.sh
 
 | 단계 | 실제 확인 결과 |
 |---|---|
-| 공식 소스 | Meta `facebookresearch/sam3`를 별도 `sam3/` Git submodule로 checkout했다. 소스 확보만 확인했다. |
-| 공식 가중치 | Hugging Face 계정 `jinwoo31`은 `facebook/sam3`와 `facebook/sam3.1` 접근 승인이 없다. 각각 `config.json` 다운로드가 `Access denied. This repository requires approval.`로 실패했다. `.pt` 체크포인트는 받지 못했다. |
-| Mac 환경 | `uv sync --project envs/sam3_macos --python 3.13`이 성공해 Python 3.13.15, `sam3-mlx==0.1.1`, MLX 0.32.2를 독립 `.venv`에 설치했다. sandbox 안에서 `import mlx.core`는 `No Metal device available`로 실패했다. sandbox 밖 검증 요청은 중단돼 실제 Mac GPU 추론은 미확인이다. |
+| 공식 소스 | Meta `facebookresearch/sam3`를 별도 `sam3/` Git submodule로 checkout했다. |
+| 공식 가중치 | 처음에는 `jinwoo31` 계정의 HF 승인이 없어 `config.json` 요청이 `Access denied. This repository requires approval.`로 실패했다. 승인 후 2026-09-26 `facebook/sam3`의 `sam3.pt`(3.2 GiB)와 `config.json`을 `model_weights/sam3/official/`에 다운로드했다. `sam3.pt` SHA-256: `9999e2341ceef5e136daa386eecb55cb414446a00ac2b55eb2dfd2f7c3cf8c9e`. SAM3.1은 다운로드하지 않았다. |
+| Mac 환경 | 독립 `envs/sam3_macos/.venv`에 Python 3.13.15, `sam3-mlx==0.1.1`, MLX 0.32.2, PyTorch 2.14.0을 설치했다. sandbox의 Metal 장치 접근은 `No Metal device available`로 실패했지만 정상 호스트에서는 MLX `Device(gpu, 0)`를 확인했다. 공식 `.pt`를 1400개 텐서의 `model.safetensors`로 변환하고 `sam3/assets/images/truck.jpg`에 `truck` 프롬프트를 적용해 점수 0.864565, 마스크 shape `(1, 1, 1200, 1800)`을 확인했다. |
 | Ubuntu 환경 | 호스트 주소가 없어 Ubuntu 설치, Docker 빌드, CUDA 장치 확인, 공식 SAM3 추론은 하지 않았다. `envs/sam3_ubuntu`에는 독립 `uv` 환경 정의만 준비했다. |
 
-가중치 접근 승인, 소스 checkout, 패키지 설치, 실제 mask 출력은 별도 상태다. 승인 토큰과 가중치는 Git에 올리지 않는다. 공식 SAM3는 CUDA 실행 경로이며 Mac은 별도 MLX 포트를 사용한다. [공식 설치](https://github.com/facebookresearch/sam3#installation), [공식 가중치](https://huggingface.co/facebook/sam3), [Mac 포트](https://pypi.org/project/sam3-mlx/).
+Mac 이미지 추론까지 검증했다. Ubuntu CUDA와 SAM3.1 영상 추론은 미검증이다. 승인 토큰과 가중치는 Git에 올리지 않는다. 공식 SAM3는 CUDA 실행 경로이며 Mac은 별도 MLX 포트를 사용한다. [공식 설치](https://github.com/facebookresearch/sam3#installation), [공식 가중치](https://huggingface.co/facebook/sam3), [Mac 포트](https://pypi.org/project/sam3-mlx/).
 
 DINOv3 ViT-B/16의 승인된 별도 Git LFS 사본도 `model_weights/dinov3-vitb16-pretrain-lvd1689m/`에 유지한다. `fetch_all.sh`은 독립 다운로드 경로 `model_weights/dinov3/vitb16-hf/`를 검사한다.

@@ -30,6 +30,7 @@ bash scripts/check_weights.sh
 | Depth Anything V2 Small | [공식 HF](https://huggingface.co/depth-anything/Depth-Anything-V2-Small) | `model_weights/depth_anything_v2/depth_anything_v2_vits.pth` | `bash scripts/fetch_depth_anything_v2.sh` |
 | MapAnything Apache | [Meta HF](https://huggingface.co/facebook/map-anything-apache) | `model_weights/map_anything/{config.json,model.safetensors}` | `bash scripts/fetch_map_anything.sh` |
 | SAM 2.1 Hiera Small | [Meta 공식 checkpoints](https://github.com/facebookresearch/sam2#download-checkpoints) | `model_weights/sam2/sam2.1_hiera_small.pt` | `bash scripts/fetch_sam2.sh` |
+| SAM3 공식 이미지 | [Meta HF, 승인 필요](https://huggingface.co/facebook/sam3) | `model_weights/sam3/official/{sam3.pt,config.json}` | `HF_HUB_DISABLE_XET=1 bash scripts/fetch_sam3.sh` |
 
 기존 DINOv2 파일이 없다면:
 
@@ -59,4 +60,4 @@ shasum -a 256 -c CHECKPOINT_SHA256SUMS
 
 기본 브랜치에서 관리하던 승인된 DINOv3 ViT-B/16 Git LFS 사본은 `model_weights/dinov3-vitb16-pretrain-lvd1689m/`에 그대로 유지한다. 현재 다운로드·검사 스크립트는 별도 경로 `model_weights/dinov3/vitb16-hf/`를 사용한다. 두 경로 모두 모델 폴더를 `--dino-weights`에 전달할 수 있다. LFS 사본이 포인터만 남았다면 `bash scripts/fetch_all.sh`을 실행한다.
 
-SAM3는 별도 실험 후보로 소스와 격리 환경 정의를 유지한다. 공식 가중치 접근 승인이 없어 `fetch_all.sh` 대상에 넣지 않았다. 현재 준비된 분할 가중치는 SAM 2.1 Hiera Small이다.
+SAM3는 사용자 계정 접근 승인 후 공식 `facebook/sam3` 체크포인트를 별도로 받았다. 다른 계정도 모델 접근 승인이 필요하다. `fetch_all.sh`에는 넣지 않았다. `sam3.pt` SHA-256은 `9999e2341ceef5e136daa386eecb55cb414446a00ac2b55eb2dfd2f7c3cf8c9e`이다. Mac에서는 반드시 `envs/sam3_macos/.venv`, Ubuntu에서는 `envs/sam3_ubuntu/.venv`를 사용한다. Mac 공식 체크포인트 변환과 이미지 추론은 [Mac 실행 안내](../envs/sam3_macos/README.md)를 따른다. 가중치와 HF 토큰은 Git에 올리지 않는다.
