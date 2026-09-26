@@ -13,15 +13,12 @@
 [submodule "linea"]
 	path = linea
 	url = https://github.com/SebastianJanampa/LINEA.git
-[submodule "deeplsd"]
-	path = deeplsd
-	url = https://github.com/cvg/DeepLSD.git
 [submodule "depth_anything_v2"]
 	path = depth_anything_v2
 	url = https://github.com/DepthAnything/Depth-Anything-V2.git
 [submodule "map_anything"]
 	path = map_anything
 	url = https://github.com/facebookresearch/map-anything.git
-[submodule "elsed"]
-	path = elsed
-	url = https://github.com/iago-suarez/ELSED.git
+[submodule "sam2"]
+	path = sam2
+	url = https://github.com/facebookresearch/sam2.git
