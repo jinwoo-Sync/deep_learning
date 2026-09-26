@@ -1,3 +1,27 @@
-[submodule "superpoint"]
-	path = superpoint
-	url = https://github.com/rpautrat/SuperPoint.git
+[submodule "dedode"]
+	path = dedode
+	url = https://github.com/Parskatt/DeDoDe.git
+[submodule "minima"]
+	path = minima
+	url = https://github.com/LSXI7/MINIMA.git
+[submodule "xoftr"]
+	path = xoftr
+	url = https://github.com/OnderT/xoftr.git
+[submodule "dad"]
+	path = dad
+	url = https://github.com/Parskatt/DaD.git
+[submodule "linea"]
+	path = linea
+	url = https://github.com/SebastianJanampa/LINEA.git
+[submodule "deeplsd"]
+	path = deeplsd
+	url = https://github.com/cvg/DeepLSD.git
+[submodule "depth_anything_v2"]
+	path = depth_anything_v2
+	url = https://github.com/DepthAnything/Depth-Anything-V2.git
+[submodule "map_anything"]
+	path = map_anything
+	url = https://github.com/facebookresearch/map-anything.git
+[submodule "elsed"]
+	path = elsed
+	url = https://github.com/iago-suarez/ELSED.git
