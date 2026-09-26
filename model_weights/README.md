@@ -5,6 +5,9 @@
 ## 한 번에 받기
 
 ```bash
+# TensorGraphX는 codex/elsed-third-party 브랜치를 체크아웃한다.
+# deep_learning만 별도 받을 때는:
+# git clone --branch codex/model-weights https://github.com/jinwoo-Sync/deep_learning.git
 cd 3rd/deep_learning
 # uv가 없다면 먼저 https://docs.astral.sh/uv/getting-started/installation/ 에서 설치
 # DINOv3 접근 조건에 동의한 HF 계정만 로그인 필요:
@@ -18,7 +21,7 @@ bash scripts/check_weights.sh
 | 모델 | 공식 출처 | 저장 위치 | 개별 명령 |
 |---|---|---|---|
 | DINOv3 ViT-B/16 | [Meta HF](https://huggingface.co/facebook/dinov3-vitb16-pretrain-lvd1689m) | `model_weights/dinov3/vitb16-hf/{config.json,model.safetensors}` | `bash scripts/fetch_dinov3.sh` |
-| DINOv2 ViT-S/14 | [Meta 공개 체크포인트](https://dl.fbaipublicfiles.com/dinov2/dinov2_vits14/dinov2_vits14_pretrain.pth) | `model_weights/dinov2_vits14_pretrain.pth` | 아래 명령 참조 |
+| DINOv2 ViT-S/14 | [Meta 공개 체크포인트](https://dl.fbaipublicfiles.com/dinov2/dinov2_vits14/dinov2_vits14_pretrain.pth) | `model_weights/dinov2_vits14_pretrain.pth` | `bash scripts/fetch_dinov2.sh` |
 | DaD | [공식 release](https://github.com/Parskatt/DaD/releases/tag/v0.1.0) | `model_weights/dad/dad.pth` | `bash scripts/fetch_dad.sh` |
 | DeDoDe v2 검출기 | [Kornia HF mirror](https://huggingface.co/kornia/dedode/tree/main) | `model_weights/dedode/dedode_detector_L_v2.pth` | `bash scripts/fetch_dedode.sh` |
 | MINIMA LoFTR·XoFTR | [공식 MINIMA release](https://github.com/LSXI7/storage/releases/tag/MINIMA) | `model_weights/minima/minima_loftr.ckpt`, `minima_xoftr.ckpt` | `bash scripts/fetch_minima.sh` |

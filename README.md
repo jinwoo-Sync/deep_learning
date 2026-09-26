@@ -18,8 +18,11 @@ ELSED는 **TensorGraphX의 `3rd/ELSED`** 에 있다. CPU C++ 소스이며 학습
 ## 다른 Mac·Ubuntu에서 시작
 
 ```bash
-# TensorGraphX를 받은 뒤:
-git submodule update --init --recursive
+# 새 머신: 검증된 별도 브랜치를 받는다. 기본 브랜치는 아직 갱신 전이다.
+git clone --branch codex/elsed-third-party https://github.com/jinwoo-Sync/TensorGraphX.git
+cd TensorGraphX
+git submodule update --init 3rd/deep_learning 3rd/ELSED
+git -C 3rd/deep_learning submodule update --init --recursive
 cd 3rd/deep_learning
 
 # uv가 설치돼 있고, DINOv3 Hugging Face 접근 승인이 있는 경우:
