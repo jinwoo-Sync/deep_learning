@@ -1,3 +1,27 @@
-[submodule "superpoint"]
-	path = superpoint
-	url = https://github.com/rpautrat/SuperPoint.git
+[submodule "DaD"]
+	path = DaD
+	url = https://github.com/Parskatt/DaD.git
+[submodule "DeDoDe"]
+	path = DeDoDe
+	url = https://github.com/Parskatt/DeDoDe.git
+[submodule "MINIMA"]
+	path = MINIMA
+	url = https://github.com/LSXI7/MINIMA.git
+[submodule "XoFTR"]
+	path = XoFTR
+	url = https://github.com/OnderT/XoFTR.git
+[submodule "DiffusionEdge"]
+	path = DiffusionEdge
+	url = https://github.com/GuHuangAI/DiffusionEdge.git
+[submodule "SAM2"]
+	path = SAM2
+	url = https://github.com/facebookresearch/sam2.git
+[submodule "MapAnything"]
+	path = MapAnything
+	url = https://github.com/facebookresearch/map-anything.git
+[submodule "Depth-Anything-V2"]
+	path = Depth-Anything-V2
+	url = https://github.com/DepthAnything/Depth-Anything-V2.git
+[submodule "OmniGlue"]
+	path = OmniGlue
+	url = https://github.com/google-research/omniglue.git

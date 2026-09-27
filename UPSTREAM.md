@@ -7,3 +7,7 @@
 | DINOv2 | https://github.com/facebookresearch/dinov2 | See `dinov2/UPSTREAM_COMMIT.txt` | Apache-2.0 source copy in `dinov2/`; public ViT-S/14 weight in Git LFS |
 
 The SuperPoint detector and `superpoint_v6_from_tf.pth` are read from the upstream MIT submodule. The SuperGlue matching model is not used by TensorGraphX.
+
+## Commercial matcher migration
+
+The original SuperPoint submodule is being removed from the production path. `MINIMA/minima_lightglue` and the official OmniGlue runtime require SuperPoint and are excluded. Upstream repositories are pinned through `.gitmodules`; per-model weights and terms are separate. See `README.md` and TensorGraphX `docs/TARGETLESS_COMMERCIAL_MATCHER_COMPARISON.md`.
